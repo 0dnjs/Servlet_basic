@@ -19,7 +19,9 @@ public class DuplicateUsername extends HttpServlet {
 	
 	// get요청일땐 파라미터로 요청을 날린다
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String username = request.getParameter("username");
+
+		
+		String username = request.getParameter("username");
 			
 			for(int i = 0; i < usernames.length; i++) {
 				if(Objects.equals(usernames[i], username)) {

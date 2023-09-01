@@ -50,11 +50,11 @@ public class SignupServlet extends HttpServlet {
 //		System.out.println(userMap.get("username")); // Map에서 하나씩 꺼내서 출력가능
 //		System.out.println(userMap.get("password"));
 //		System.out.println(userMap.get("name"));
-//		System.out.println(userMap.get("email"));
+//		System.out.println(userMap.get("email"));ㄴ
 		
 		System.out.println("회원가입");
 		
-		ResponseUtil.response(response).of(400).body("회원가입 실패!!!");
+		ResponseUtil.response(response).of(200).body("회원가입 성공");
 	}
 
 }
