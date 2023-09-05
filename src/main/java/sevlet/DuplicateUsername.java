@@ -9,27 +9,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.UserData;
+import entity.User;
 import utils.ResponseUtil;
 
 @WebServlet("/auth/signup/duplicate/username")
 public class DuplicateUsername extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private String[] usernames = {"aaa", "bbb", "ccc"};
+
 	
 	// get요청일땐 파라미터로 요청을 날린다
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
 		String username = request.getParameter("username");
+		Boolean responseData = false;
 			
-			for(int i = 0; i < usernames.length; i++) {
-				if(Objects.equals(usernames[i], username)) {
-					ResponseUtil.response(response).of(400).body(true);
-					return;
+			for(User user : UserData.userList) {
+				if(Objects.equals(user.getUsername(), username)) {
+					responseData = true;
+					break;
 				}
 			}
 			
-			ResponseUtil.response(response).of(200).body(false);
+			ResponseUtil.response(response).of(200).body(responseData);
 	}
 }
