@@ -54,6 +54,7 @@ public class ProfileServlet extends HttpServlet {
 				userList.set(i, user);
 				authentication.setUser(user);
 				ResponseUtil.response(response).of(200).body(true);
+				return;
 			}
 		}
 		
